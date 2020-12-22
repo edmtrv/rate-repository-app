@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const RepositoryItem = ({item}) => (
+const RepositoryItem = ({ item }) => (
   <View>
     <Text>Full Name: {item.fullName}</Text>
     <Text>Description {item.description}</Text>
