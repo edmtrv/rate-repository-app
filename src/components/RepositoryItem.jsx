@@ -1,15 +1,18 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import Card from './Card';
+
+const repositoryItemStyles = StyleSheet.create({
+  container: {
+    // alignItems: 'center',
+    justifyContent: 'center',
+    padding: 24,
+  },
+});
 
 const RepositoryItem = ({ item }) => (
-  <View>
-    <Text>Full Name: {item.fullName}</Text>
-    <Text>Description {item.description}</Text>
-    <Text>Language {item.language}</Text>
-    <Text>Stars: {item.stargazersCount}</Text>
-    <Text>Forks: {item.forksCount}</Text>
-    <Text>Reviews: {item.reviewCount}</Text>
-    <Text>Rating: {item.ratingAverage}</Text>
+  <View style={repositoryItemStyles.container}>
+    <Card item={item} />
   </View>
 );
 
