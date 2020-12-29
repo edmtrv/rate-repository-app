@@ -1,11 +1,13 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { Link } from 'react-router-native';
 import Constants from 'expo-constants';
 import AppBarTab from './AppBarTab';
 import theme from '../theme';
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: 'row',
     paddingTop: Constants.statusBarHeight,
     paddingLeft: 10,
     paddingBottom: 20,
@@ -16,7 +18,8 @@ const styles = StyleSheet.create({
 const AppBar = () => {
   return (
     <View style={styles.container}>
-      <AppBarTab text="Repositories" />
+      <AppBarTab to="/" text="Repositories" />
+      <AppBarTab to="/signin" text="Sign in" />
     </View>
   );
 };

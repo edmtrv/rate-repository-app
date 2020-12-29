@@ -1,14 +1,28 @@
 import React from 'react';
-import { TouchableWithoutFeedback } from 'react-native';
+import { TouchableWithoutFeedback, StyleSheet } from 'react-native';
+import { Link } from 'react-router-native';
 import Text from './Text';
 
-const AppBarTab = ({ text, onPressHandler }) => {
+const styles = StyleSheet.create({
+  tab: {
+    marginRight: 10,
+  },
+});
+
+const AppBarTab = ({ to, text, onPressHandler }) => {
   return (
-    <TouchableWithoutFeedback onPress={onPressHandler}>
-      <Text color="darkbg" fontSize="subheading" fontWeight="bold">
-        {text}
-      </Text>
-    </TouchableWithoutFeedback>
+    <Link to={to}>
+      <TouchableWithoutFeedback onPress={onPressHandler}>
+        <Text
+          style={styles.tab}
+          color="darkbg"
+          fontSize="subheading"
+          fontWeight="bold"
+        >
+          {text}
+        </Text>
+      </TouchableWithoutFeedback>
+    </Link>
   );
 };
 
