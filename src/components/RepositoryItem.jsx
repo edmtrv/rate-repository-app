@@ -1,12 +1,14 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import theme from '../theme';
 import Card from './Card';
 
 const repositoryItemStyles = StyleSheet.create({
   container: {
-    // alignItems: 'center',
     justifyContent: 'center',
     padding: 24,
+    borderBottomWidth: 5,
+    borderBottomColor: theme.colors.lines,
   },
 });
 

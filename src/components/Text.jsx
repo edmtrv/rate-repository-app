@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     fontWeight: theme.fontWeights.bold,
   },
   colorTextDarkBackground: {
-    color: theme.colors.textDarkBaclground,
+    color: theme.colors.textDarkBackground,
   },
 });
 

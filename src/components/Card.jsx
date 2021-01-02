@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
+
 import Text from './Text';
+import theme from '../theme';
 
 const parseCount = (count) => {
   if (count >= 1000) {
@@ -47,7 +49,7 @@ const languageStyles = StyleSheet.create({
   },
   tag: {
     padding: 10,
-    backgroundColor: '#0366d6',
+    backgroundColor: theme.colors.primary,
     alignSelf: 'flex-start',
     borderRadius: 5,
   },
