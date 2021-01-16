@@ -2,6 +2,7 @@ import React from 'react';
 import { View, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { useHistory } from 'react-router-native';
 
 import FormikTextInput from './FormikTextInput';
 import Text from './Text';
@@ -45,13 +46,14 @@ const SignInForm = ({ onSubmit }) => {
 
 const SignIn = () => {
   const [signIn] = useSignIn();
+  let history = useHistory();
 
   const onSubmit = async (values) => {
     const { username, password } = values;
 
     try {
-      const { data } = await signIn({ username, password });
-      console.log(data);
+      await signIn({ username, password });
+      history.push('/repositories');
     } catch (e) {
       console.log(e);
     }
