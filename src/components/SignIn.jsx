@@ -53,7 +53,7 @@ const SignIn = () => {
 
     try {
       await signIn({ username, password });
-      history.push('/repositories');
+      history.push('/');
     } catch (e) {
       console.log(e);
     }

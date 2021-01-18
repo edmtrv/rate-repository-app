@@ -12,8 +12,6 @@ const useSignIn = () => {
       variables: { credentials: { username, password } },
     });
 
-    console.log();
-
     await authStorage.setAccessToken(data.authorize.accessToken);
     result.client.resetStore();
 
