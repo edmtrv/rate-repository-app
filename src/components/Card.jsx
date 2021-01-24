@@ -36,8 +36,12 @@ const Header = ({ avatarUrl, name, description }) => (
       <Image style={headerStyles.avatar} source={{ uri: avatarUrl }} />
     </View>
     <View style={headerStyles.infoContainer}>
-      <Text fontWeight="bold">{name}</Text>
-      <Text color="textSecondary">{description}</Text>
+      <Text testID="name" fontWeight="bold">
+        {name}
+      </Text>
+      <Text testID="description" color="textSecondary">
+        {description}
+      </Text>
     </View>
   </View>
 );
@@ -57,7 +61,7 @@ const languageStyles = StyleSheet.create({
 
 const Language = ({ language }) => (
   <View style={languageStyles.container}>
-    <Text color="darkbg" style={languageStyles.tag}>
+    <Text testID="language" color="darkbg" style={languageStyles.tag}>
       {language}
     </Text>
   </View>
@@ -77,19 +81,27 @@ const statsStyles = StyleSheet.create({
 const Stats = ({ stars, forks, reviews, rating }) => (
   <View style={statsStyles.container}>
     <View style={statsStyles.pair}>
-      <Text fontWeight="bold">{parseCount(stars)}</Text>
+      <Text testID="stars" fontWeight="bold">
+        {parseCount(stars)}
+      </Text>
       <Text>Stars</Text>
     </View>
     <View style={statsStyles.pair}>
-      <Text fontWeight="bold">{parseCount(forks)}</Text>
+      <Text testID="forks" fontWeight="bold">
+        {parseCount(forks)}
+      </Text>
       <Text>Forks</Text>
     </View>
     <View style={statsStyles.pair}>
-      <Text fontWeight="bold">{reviews}</Text>
+      <Text testID="reviews" fontWeight="bold">
+        {reviews}
+      </Text>
       <Text>Reviews</Text>
     </View>
     <View style={statsStyles.pair}>
-      <Text fontWeight="bold">{rating}</Text>
+      <Text testID="rating" fontWeight="bold">
+        {rating}
+      </Text>
       <Text>Rating</Text>
     </View>
   </View>
