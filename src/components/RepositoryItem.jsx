@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { useHistory } from 'react-router-native';
 import theme from '../theme';
 import Card from './Card';
 
@@ -12,10 +13,16 @@ const repositoryItemStyles = StyleSheet.create({
   },
 });
 
-const RepositoryItem = ({ item }) => (
-  <View style={repositoryItemStyles.container}>
-    <Card item={item} />
-  </View>
-);
+const RepositoryItem = ({ item }) => {
+  let history = useHistory();
+
+  return (
+    <View style={repositoryItemStyles.container}>
+      <TouchableOpacity onPress={() => history.push(`/${item.id}`)}>
+        <Card item={item} />
+      </TouchableOpacity>
+    </View>
+  );
+};
 
 export default RepositoryItem;

@@ -1,5 +1,11 @@
 import React from 'react';
-import { View, Image, StyleSheet } from 'react-native';
+import {
+  View,
+  Image,
+  StyleSheet,
+  TouchableWithoutFeedback,
+} from 'react-native';
+import * as Linking from 'expo-linking';
 
 import Text from './Text';
 import theme from '../theme';
@@ -107,27 +113,47 @@ const Stats = ({ stars, forks, reviews, rating }) => (
   </View>
 );
 
+const buttonStyles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    backgroundColor: theme.colors.primary,
+    padding: 10,
+    marginTop: 20,
+  },
+});
+
+const GithubButton = ({ url }) => (
+  <TouchableWithoutFeedback onPress={() => Linking.openURL(url)}>
+    <View style={buttonStyles.container}>
+      <Text color="darkbg">Open in GitHub</Text>
+    </View>
+  </TouchableWithoutFeedback>
+);
+
 const cardStyles = StyleSheet.create({
   container: {
     alignItems: 'stretch',
   },
 });
 
-const Card = ({ item }) => (
-  <View style={cardStyles.container}>
-    <Header
-      avatarUrl={item.ownerAvatarUrl}
-      name={item.fullName}
-      description={item.description}
-    />
-    <Language language={item.language} />
-    <Stats
-      stars={item.stargazersCount}
-      forks={item.forksCount}
-      reviews={item.reviewCount}
-      rating={item.ratingAverage}
-    />
-  </View>
-);
+const Card = ({ item }) => {
+  return (
+    <View style={cardStyles.container}>
+      <Header
+        avatarUrl={item.ownerAvatarUrl}
+        name={item.fullName}
+        description={item.description}
+      />
+      <Language language={item.language} />
+      <Stats
+        stars={item.stargazersCount}
+        forks={item.forksCount}
+        reviews={item.reviewCount}
+        rating={item.ratingAverage}
+      />
+      {item.url && <GithubButton url={item.url} />}
+    </View>
+  );
+};
 
 export default Card;
