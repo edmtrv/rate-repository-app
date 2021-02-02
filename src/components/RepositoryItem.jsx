@@ -7,7 +7,7 @@ import Card from './Card';
 const repositoryItemStyles = StyleSheet.create({
   container: {
     justifyContent: 'center',
-    padding: 24,
+    padding: 12,
     borderBottomWidth: 5,
     borderBottomColor: theme.colors.lines,
   },
