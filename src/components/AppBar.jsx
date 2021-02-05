@@ -27,7 +27,10 @@ const AppBar = () => {
       <ScrollView horizontal>
         <AppBarTab to="/" text="Repositories" />
         {data.authorizedUser ? (
-          <AppBarTab to="/signout" text="Sign out" />
+          <>
+            <AppBarTab to="/createreview" text="Create a review" />
+            <AppBarTab to="/signout" text="Sign out" />
+          </>
         ) : (
           <AppBarTab to="/signin" text="Sign in" />
         )}
