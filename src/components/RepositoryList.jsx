@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FlatList } from 'react-native';
 
 import useRepositories from '../hooks/useRepositories';
@@ -6,14 +6,20 @@ import ItemSeparator from './ItemSeparator';
 import RepositoryItem from './RepositoryItem';
 import SelectOrdering from './SelectOrdering';
 
-export const RepositoryListContainer = ({ repositories }) => {
+export const RepositoryListContainer = ({
+  repositories,
+  onSelect,
+  selection,
+}) => {
   const repositoriyNodes = repositories
     ? repositories.edges.map((edge) => edge.node)
     : [];
 
   return (
     <FlatList
-      ListHeaderComponent={SelectOrdering}
+      ListHeaderComponent={() => (
+        <SelectOrdering handleSelect={onSelect} selection={selection} />
+      )}
       data={repositoriyNodes}
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item }) => <RepositoryItem item={item} />}
@@ -23,9 +29,25 @@ export const RepositoryListContainer = ({ repositories }) => {
 };
 
 const RepositoryList = () => {
-  const { repositories } = useRepositories();
+  const { repositories, refetch } = useRepositories({
+    orderBy: 'CREATED_AT',
+    orderDirection: 'DESC',
+  });
 
-  return <RepositoryListContainer repositories={repositories} />;
+  const [selection, setSelection] = useState(null);
+
+  const onSelect = (value) => {
+    setSelection(value);
+    refetch(value);
+  };
+
+  return (
+    <RepositoryListContainer
+      repositories={repositories}
+      onSelect={onSelect}
+      selection={selection}
+    />
+  );
 };
 
 export default RepositoryList;

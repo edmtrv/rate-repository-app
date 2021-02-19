@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import RNPickerSelect from 'react-native-picker-select';
 
-const orderingCriterias = [
+const items = [
   {
     label: 'Latest repositories',
-    value: { orderBy: 'CREATED_AT', orderDirection: null },
+    value: { orderBy: 'CREATED_AT', orderDirection: 'DESC' },
   },
   {
     label: 'Highest rated repositories',
@@ -16,13 +16,13 @@ const orderingCriterias = [
   },
 ];
 
-const SelectOrdering = () => {
-  const [selection, setSelection] = useState();
+const SelectOrdering = ({ handleSelect, selection }) => {
   return (
     <RNPickerSelect
+      placeholder={{}}
       value={selection}
-      onValueChange={(value) => setSelection(value)}
-      items={orderingCriterias}
+      onValueChange={handleSelect}
+      items={items}
     />
   );
 };
