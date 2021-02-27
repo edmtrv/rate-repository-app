@@ -31,6 +31,8 @@ export class RepositoryListContainer extends React.Component {
         ItemSeparatorComponent={ItemSeparator}
         renderItem={({ item }) => <RepositoryItem item={item} />}
         keyExtractor={(item) => item.id}
+        onEndReached={this.props.onEndReach}
+        onEndReachedThreshold={0.5}
       />
     );
   }
@@ -51,7 +53,8 @@ const RepositoryListHeader = ({
 };
 
 const RepositoryList = () => {
-  const { repositories, refetch } = useRepositories({
+  const { repositories, refetch, fetchMore } = useRepositories({
+    first: 8,
     orderBy: 'CREATED_AT',
     orderDirection: 'DESC',
   });
@@ -70,6 +73,10 @@ const RepositoryList = () => {
     refetch(value);
   };
 
+  const onEndReach = () => {
+    fetchMore();
+  };
+
   return (
     <RepositoryListContainer
       repositories={repositories}
@@ -77,6 +84,7 @@ const RepositoryList = () => {
       selection={selection}
       handleChangeText={handleChangeText}
       text={text}
+      onEndReach={onEndReach}
     />
   );
 };
