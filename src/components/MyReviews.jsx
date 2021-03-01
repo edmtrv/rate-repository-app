@@ -25,7 +25,6 @@ const MyReviews = () => {
     : [];
 
   const handleViewRepositroy = (id) => {
-    console.log(id);
     history.push(`/${id}`);
   };
 
