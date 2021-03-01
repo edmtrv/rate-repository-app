@@ -59,6 +59,7 @@ export const GET_REPOSITORY = gql`
             createdAt
             text
             rating
+
             user {
               id
               username
@@ -89,6 +90,7 @@ export const GET_AUTHORIZED_USER = gql`
             createdAt
             text
             rating
+            repositoryId
             user {
               id
               username
